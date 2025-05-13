@@ -1,11 +1,12 @@
 const Produto = require("../models/produtoModel")
 const errors = require("restify-errors")
+const produtoView = require("../views/produtoView")
 
 //função que retorna todos os produtos
 async function getAll(req, res){
   try{
     const produtos = await Produto.getAll()
-    res.send(produtos)
+    res.send(produtoView.viewAllProducts(produtos))
   }
   catch (err){
     res.send(new errors.InternalServerError("Erro ao buscar produtos"))
@@ -20,7 +21,7 @@ async function getById(req, res){
       if (!produto){
         res.send(404, {message: `O produto com ID ${id} não foi encontrado`})
       }
-      res.send(200, produto)
+      res.send(200, produtoView.viewProduct(produto))
   }
   catch (err){
     res.send(new errors.InternalServerError(`Erro ao buscar produto com ID ${id}`))
@@ -30,8 +31,9 @@ async function getById(req, res){
 //função que cria um produto baseado nos dados fornecidos
 async function create(req, res){ 
   try{
-    const produtoNew = await Produto.create(req.body)
-    res.send(201, produtoNew)
+    const [id] = await Produto.create(req.body)
+    const produtoNew = await Produto.getById(id)
+    res.send(201, produtoView.viewProduct(produtoNew))
   }
   catch (err){
     res.send(new errors.InternalServerError("Erro ao criar produto"))

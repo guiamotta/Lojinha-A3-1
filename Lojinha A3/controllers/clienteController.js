@@ -1,11 +1,12 @@
 const Cliente = require("../models/clienteModel")
 const errors = require("restify-errors")
+const clienteView = require("../views/clienteView")
 
 //função que retorna todos os clientes
 async function getAll(req, res){
   try{
     const clientes = await Cliente.getAll()
-    res.send(clientes)
+    res.send(clienteView.viewAllClients(clientes))
   }
   catch (err){
     res.send(new errors.InternalServerError("Erro ao buscar clientes"))
@@ -20,7 +21,7 @@ async function getById(req, res){
       if (!cliente){
         res.send(404, {message: `O cliente com ID ${id} não foi encontrado`})
       }
-      res.send(200, cliente)
+      res.send(clienteView.viewClient(cliente))
   }
   catch (err){
     res.send(new errors.InternalServerError(`Erro ao buscar cliente com ID ${id}`))
@@ -30,8 +31,9 @@ async function getById(req, res){
 //função que cria um cliente baseado nos dados fornecidos
 async function create(req, res){ 
   try{
-    const clienteNew = await Cliente.create(req.body)
-    res.send(201, clienteNew)
+    const [id] = await Produto.create(req.body)
+    const clienteNew = await Produto.getById(id)
+    res.send(201, clienteView.viewClient(clienteNew))
   }
   catch (err){
     res.send(new errors.InternalServerError("Erro ao criar cliente"))
