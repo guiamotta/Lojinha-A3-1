@@ -25,7 +25,6 @@ async function getById(req, res){
   catch (err){
     res.send(new errors.InternalServerError(`Erro ao buscar produto com ID ${id}`))
   }
-  
 }
 
 //função que cria um produto baseado nos dados fornecidos
