@@ -1,4 +1,4 @@
-//realiza conexao com o banco de dados usando os parametros abaixo
+//realiza conexão com o banco de dados usando os parâmetros abaixo
 const conn = require("knex") ({
     client: "mysql",
     connection: {
