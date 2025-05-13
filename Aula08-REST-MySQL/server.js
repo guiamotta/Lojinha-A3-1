@@ -14,15 +14,15 @@ server.listen( 8001, function(){
     console.log( "%s executando em: %s" , server.name, server.url)
 } )
 
-var conn = require( "knex" )( {
-    client : "mysql" ,
-    connection : {
-        host : "localhost" ,
-        user : "root" ,
-        password : "" ,
-        database : "loja"
-    }
-} )
+//var conn = require( "knex" )( {
+//    client : "mysql" ,
+//    connection : {
+//        host : "localhost" ,
+//        user : "root" ,
+//        password : "" ,
+//        database : "loja"
+//    }
+//} )
 
 server.get( "/produto" , (req, res, next) =>{ 
     conn( "produto" )
