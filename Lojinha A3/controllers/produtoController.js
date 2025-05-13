@@ -30,7 +30,7 @@ async function update(req, res){
   if (!produtoUpdated){
     res.send(404, {message: `O produto com ID ${id} não foi encontrado`})
   }
-  res.send(200, produtoUpdated)
+  res.send(200, {success: true})
 }
 
 //função que deleta um produto baseado no seu ID
@@ -40,7 +40,7 @@ async function remove(req, res){
   if (!produtoDeleted){
     res.send(404, {message: `O produto com ID ${id} não foi encontrado`})
   }
-  res.send(200, produtoDeleted)
+  res.send(200, {success: true})
 }
 
 //exporta as funções
