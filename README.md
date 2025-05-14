@@ -14,14 +14,38 @@
 
 -----
 
-**O padrão de projeto escolhido para a Lojinha foi o MVC.**
-
 **A Ficha-Resumo encontra-se em PDF no repositório.**
+
+**Dentre os padrões de projeto mais utilizados em API's REST NodeJs, pode-se listar
+Model View Controller (MVC), Repository Pattern, Service Layer, Factory
+Pattern, Middleware Pattern, Router Pattern, Data Transfer Object (DTO) e
+Singleton Pattern.**
+
+**O padrão de projeto escolhido para a Lojinha foi o Model-View-Controller (MVC). A
+motivação para a escolha foi principalmente a sua boa separação de
+responsabilidades, o que facilita a organização, manutenção e escalabilidade do
+código. O MVC consiste da divisão do código em três camadas interconectadas:**
+
+- Model consiste na parte lógica da aplicação que gerencia o comportamento
+dos dados através de regras de negócios, lógica e funções. Aguarda a
+chamada das funções, que permite o acesso aos dados.
+
+- View é a representação dos dados, como uma tabela ou um diagrama. É
+onde os dados solicitados do Model são exibidos. No caso da API, os dados
+são representados em forma de JSON.
+
+- Controller faz a mediação da entrada e saída, comandando o View e o
+Model para serem alterados de forma apropriada conforme o usuário
+solicitou.
+
+**Para além do Model, View e Controller, o código também possui um componente
+DB dedicado à conexão ao banco de dados ./db/connection.js e outro chamado
+Routes dedicado à definição dos endpoints ./routes/routes.js.**
 
 -----
 
 # 🛍️ Lojinha API
-## Este projeto implementa uma API RESTful para gerenciamento de produtos e clientes de uma loja, utilizando o padrão de arquitetura Model-View-Controller (MVC). O foco está na separação de responsabilidades, promovendo facilidade de manutenção e escalabilidade.
+## Este projeto implementa uma API RESTful para gerenciamento de produtos e clientes de uma loja, utilizando o padrão de arquitetura Model-View-Controller (MVC).
 
 # 📐 Arquitetura MVC
 ## A aplicação está dividida em três camadas principais:
