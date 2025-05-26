@@ -14,11 +14,11 @@ function registerRoutes(server) {
   server.del("/produto/:idProd", produtoController.remove)
 
   //endpoints cliente
-  server.get("/cliente", produtoController.getAll)
-  server.get("/cliente/:idClient", produtoController.getById)
-  server.post("/cliente", produtoController.create)
-  server.put("/cliente/:idClient", produtoController.update)
-  server.del("/cliente/:idClient", produtoController.remove) 
+  server.get("/cliente", clienteController.getAll)
+  server.get("/cliente/:idClient", clienteController.getById)
+  server.post("/cliente", clienteController.create)
+  server.put("/cliente/:idClient", clienteController.update)
+  server.del("/cliente/:idClient", clienteController.remove) 
 }
 
 module.exports = registerRoutes
