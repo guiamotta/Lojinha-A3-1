@@ -1,4 +1,5 @@
 const produtoController = require("../controllers/produtoController")
+const produtoController = require("../controllers/clienteController")
 
 //define os endpoints
 function registerRoutes(server) {
